@@ -1,0 +1,24 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer decorative circle -->
+  <circle cx="100" cy="100" r="95" fill="#F5DEB3" stroke="#8B6914" stroke-width="2"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#8B6914" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Decorative pattern circles -->
+  <circle cx="30" cy="30" r="8" fill="none" stroke="#8B6914" stroke-width="1" opacity="0.4"/>
+  <circle cx="170" cy="30" r="8" fill="none" stroke="#8B6914" stroke-width="1" opacity="0.4"/>
+  <circle cx="30" cy="170" r="8" fill="none" stroke="#8B6914" stroke-width="1" opacity="0.4"/>
+  <circle cx="170" cy="170" r="8" fill="none" stroke="#8B6914" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Left arrow -->
+  <path d="M 50 100 L 45 95 M 45 95 L 50 90" stroke="#8B6914" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 45 95 L 35 95" stroke="#8B6914" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Right arrow -->
+  <path d="M 150 100 L 155 95 M 155 95 L 150 90" stroke="#8B6914" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 155 95 L 165 95" stroke="#8B6914" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Text -->
+  <text x="100" y="95" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#8B6914">The</text>
+  <text x="100" y="115" font-family="serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#8B6914">Ramayaana</text>
+  <text x="100" y="132" font-family="serif" font-size="14" text-anchor="middle" fill="#8B6914">salon</text>
+</svg>
