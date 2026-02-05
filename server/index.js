@@ -12,7 +12,8 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB (reads MONGO_URI from server/.env)
 connectDB();
 
-app.use(cors());
+// Allow CORS from the client URL in production; fallback to allow all for local/dev
+app.use(cors({ origin: process.env.CLIENT_URL || '*' }));
 app.use(express.json());
 
 // API routes
@@ -20,6 +21,9 @@ app.use('/api/appointments', appointmentRoutes);
 app.use('/api/admin', adminRoutes);
 
 app.use(errorHandler);
+
+// Health check for uptime monitoring
+app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
