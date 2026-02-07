@@ -12,8 +12,18 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB (reads MONGO_URI from server/.env)
 connectDB();
 
-// Allow CORS from the client URL in production; fallback to allow all for local/dev
-app.use(cors({ origin: process.env.CLIENT_URL || '*' }));
+// Allow CORS from configured client origins; fallback to allow all for local/dev
+const allowedOrigins = (process.env.CLIENT_URL || '').split(',').map((origin) => origin.trim()).filter(Boolean);
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.length === 0) return callback(null, true);
+      return allowedOrigins.includes(origin)
+        ? callback(null, true)
+        : callback(new Error('CORS: Origin not allowed'));
+    }
+  })
+);
 app.use(express.json());
 
 // API routes
