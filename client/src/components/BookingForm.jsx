@@ -63,39 +63,41 @@ export default function BookingForm(){
   }
 
   return (
-    <div id="book" className="bg-white p-6 rounded shadow-md">
-      <h3 className="text-xl font-semibold mb-4">Book Appointment</h3>
+    <div id="book" className="lux-card p-6">
+      <h3 className="text-2xl font-semibold mb-4">Book Appointment</h3>
       {message && (
-        <div className={`p-3 mb-4 ${message.type==='success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+        <div className={`p-3 mb-4 rounded ${message.type==='success' ? 'lux-success' : 'lux-error'}`}>
           {message.text}
         </div>
       )}
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input name="name" placeholder="Full Name" value={form.name} onChange={handleChange} className="p-2 border rounded" required />
-        <input name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} className="p-2 border rounded" required />
+        <input name="name" placeholder="Full Name" value={form.name} onChange={handleChange} className="lux-input" required />
+        <input name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} className="lux-input" required />
         
         <div>
-          <select value={form.service} onChange={handleServiceChange} className="w-full p-2 border rounded">
+          <select value={form.service} onChange={handleServiceChange} className="lux-select">
             {SERVICES.map(s => <option key={s.name} value={s.name}>{s.name}</option>)}
           </select>
         </div>
 
-        <div className="p-3 bg-blue-50 rounded border-l-4 border-blue-600">
-          <p className="font-semibold text-blue-900">Selected Service</p>
+        <div className="lux-panel">
+          <p className="text-xs uppercase tracking-widest lux-muted">Selected Service</p>
+          <p className="text-lg font-semibold">{form.service}</p>
+          <p className="text-sm lux-muted">Price: INR {form.price}</p>
         </div>
 
-        <input name="date" type="date" value={form.date} onChange={handleChange} className="p-2 border rounded" required />
-        <input name="time" type="time" value={form.time} onChange={handleChange} className="p-2 border rounded" required />
+        <input name="date" type="date" value={form.date} onChange={handleChange} className="lux-input" required />
+        <input name="time" type="time" value={form.time} onChange={handleChange} className="lux-input" required />
         
         <div>
           <label className="block text-sm font-semibold mb-1">Payment Method</label>
-          <select name="paymentMethod" value={form.paymentMethod} onChange={handleChange} className="w-full p-2 border rounded">
+          <select name="paymentMethod" value={form.paymentMethod} onChange={handleChange} className="lux-select">
             {PAYMENT_METHODS.map(m => <option key={m} value={m}>{m}</option>)}
           </select>
         </div>
 
         <div className="md:col-span-2">
-          <button className="w-full bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700" disabled={loading}>{loading ? 'Booking...' : 'Submit Booking'}</button>
+          <button className="w-full lux-button" disabled={loading}>{loading ? 'Booking...' : 'Submit Booking'}</button>
         </div>
       </form>
     </div>
